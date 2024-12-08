@@ -28,13 +28,12 @@ async function sprintChallenge5() { // Note the async keyword so you can use `aw
   //     "Grace Hopper"
   //   ]`
   // }
- const learnersArr = learners[0].data
-const mentorArr = mentors[0].data
 
 
-learnersArr.forEach((learner) => {
+
+ learners[0].data.forEach((learner) => {
    let mentorPersona = [] 
- mentorArr.forEach(mentor => {
+ mentors[0].data.forEach(mentor => {
  
    if(learner.mentors.includes(mentor.id)) {
     
@@ -64,11 +63,30 @@ learnersArr.forEach((learner) => {
     // ❗ Fill each <li> with a mentor name, and append it to the <ul> mentorList.
     // ❗ Inspect the mock site closely to understand what the initial texts and classes look like!
 
-    const card = document.createElement('div')
+
+
+    const card = document.createElement('div');
     const heading = document.createElement('h3')
     const email = document.createElement('div')
     const mentorsHeading = document.createElement('h4')
     const mentorsList = document.createElement('ul')
+
+    
+
+    card.appendChild(heading);
+    card.appendChild(email);
+    card.appendChild(mentorsHeading);
+    console.log(learner);
+    card.classList.add('card');
+    mentorsHeading.classList.add('closed');
+
+   
+    
+    
+     
+
+
+
 
     // 👆 ==================== TASK 3 END ====================== 👆
 
