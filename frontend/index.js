@@ -9,8 +9,8 @@ async function sprintChallenge5() { // Note the async keyword so you can use `aw
   // ❗ Use the variables `mentors` and `learners` to store the data.
   // ❗ Use the await keyword when using axios.
 
-  let mentors = [] // fix this
-  let learners = [] // fix this
+  let mentors = [await axios.get("http://localhost:3003/api/mentors")] // fix this
+  let learners = [await axios.get("http://localhost:3003/api/learners")] // fix this
 
   // 👆 ==================== TASK 1 END ====================== 👆
 
@@ -28,7 +28,24 @@ async function sprintChallenge5() { // Note the async keyword so you can use `aw
   //     "Grace Hopper"
   //   ]`
   // }
+ const learnersArr = learners[0].data
+const mentorArr = mentors[0].data
 
+
+learnersArr.forEach((learner) => {
+   let mentorPersona = [] 
+ mentorArr.forEach(mentor => {
+ 
+   if(learner.mentors.includes(mentor.id)) {
+    
+  mentorPersona.push(mentor.firstName + ' ' + mentor.lastName)
+
+  }
+ })
+  learner.mentors = mentorPersona
+  
+  })
+   
   // 👆 ==================== TASK 2 END ====================== 👆
 
   const cardsContainer = document.querySelector('.cards')
