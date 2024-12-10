@@ -44,7 +44,7 @@ async function sprintChallenge5() { // Note the async keyword so you can use `aw
   learner.mentors = mentorPersona
   
   })
-   
+  
   // 👆 ==================== TASK 2 END ====================== 👆
 
   const cardsContainer = document.querySelector('.cards')
@@ -63,20 +63,24 @@ async function sprintChallenge5() { // Note the async keyword so you can use `aw
     // ❗ Fill each <li> with a mentor name, and append it to the <ul> mentorList.
     // ❗ Inspect the mock site closely to understand what the initial texts and classes look like!
 
-
-
-    const card = document.createElement('div');
+  
+    
+    console.log(learner);
+    const card = document.createElement('div')
     const heading = document.createElement('h3')
     const email = document.createElement('div')
     const mentorsHeading = document.createElement('h4')
     const mentorsList = document.createElement('ul')
 
-    
-
+    heading.textContent = learner.data.fullName
+    email.textContent = learner.data.email
+    learner.data.forEach(learner => {
+      mentorsHeading.textContent = learner.mentors
+    })
     card.appendChild(heading);
     card.appendChild(email);
     card.appendChild(mentorsHeading);
-    console.log(learner);
+   
     card.classList.add('card');
     mentorsHeading.classList.add('closed');
 
