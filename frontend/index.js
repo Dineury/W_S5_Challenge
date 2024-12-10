@@ -9,9 +9,9 @@ async function sprintChallenge5() { // Note the async keyword so you can use `aw
   // ❗ Use the variables `mentors` and `learners` to store the data.
   // ❗ Use the await keyword when using axios.
 
-  let mentors = [await axios.get("http://localhost:3003/api/mentors")] // fix this
-  let learners = [await axios.get("http://localhost:3003/api/learners")] // fix this
-
+  let mentors = await axios.get("http://localhost:3003/api/mentors") // fix this
+  let learners = await axios.get("http://localhost:3003/api/learners") // fix this
+// console.log(learners.data);
   // 👆 ==================== TASK 1 END ====================== 👆
 
   // 👇 ==================== TASK 2 START ==================== 👇
@@ -31,9 +31,9 @@ async function sprintChallenge5() { // Note the async keyword so you can use `aw
 
 
 
- learners[0].data.forEach((learner) => {
+ learners.data.forEach((learner) => {
    let mentorPersona = [] 
- mentors[0].data.forEach(mentor => {
+ mentors.data.forEach(mentor => {
  
    if(learner.mentors.includes(mentor.id)) {
     
@@ -44,7 +44,7 @@ async function sprintChallenge5() { // Note the async keyword so you can use `aw
   learner.mentors = mentorPersona
   
   })
-  
+  console.log(learners);
   // 👆 ==================== TASK 2 END ====================== 👆
 
   const cardsContainer = document.querySelector('.cards')
@@ -54,7 +54,7 @@ async function sprintChallenge5() { // Note the async keyword so you can use `aw
 
   // 👇 ==================== TASK 3 START ==================== 👇
 
-  for (let learner of learners) { // looping over each learner object
+  for (let learner of learners.data) { // looping over each learner object
 
     // 🧠 Flesh out the elements that describe each learner
     // ❗ Give the elements below their (initial) classes, textContent and proper nesting.
@@ -65,18 +65,19 @@ async function sprintChallenge5() { // Note the async keyword so you can use `aw
 
   
     
-    console.log(learner);
+    
     const card = document.createElement('div')
     const heading = document.createElement('h3')
     const email = document.createElement('div')
     const mentorsHeading = document.createElement('h4')
     const mentorsList = document.createElement('ul')
 
-    heading.textContent = learner.data.fullName
-    email.textContent = learner.data.email
-    learner.data.forEach(learner => {
+    heading.textContent = learner.fullName
+    email.textContent = learner.email
+    learner.mentors.forEach(learner => {
       mentorsHeading.textContent = learner.mentors
     })
+    
     card.appendChild(heading);
     card.appendChild(email);
     card.appendChild(mentorsHeading);
