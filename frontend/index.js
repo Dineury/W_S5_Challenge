@@ -44,7 +44,7 @@ async function sprintChallenge5() { // Note the async keyword so you can use `aw
   learner.mentors = mentorPersona
   
   })
-  console.log(learners);
+ 
   // 👆 ==================== TASK 2 END ====================== 👆
 
   const cardsContainer = document.querySelector('.cards')
@@ -74,10 +74,13 @@ async function sprintChallenge5() { // Note the async keyword so you can use `aw
 
     heading.textContent = learner.fullName
     email.textContent = learner.email
-    learner.mentors.forEach(learner => {
-      mentorsHeading.textContent = learner.mentors
+    learner.mentors.forEach(mentor => {
+      const list = document.createElement('li');
+      mentorsHeading.textContent = "Mentors"
+     list.textContent = mentor
+      mentorsList.appendChild(list);
     })
-    
+
     card.appendChild(heading);
     card.appendChild(email);
     card.appendChild(mentorsHeading);
